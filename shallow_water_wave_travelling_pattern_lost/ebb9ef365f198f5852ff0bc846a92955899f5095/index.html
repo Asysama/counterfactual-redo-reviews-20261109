@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>shallow_water_wave_travelling_pattern_lost</title><style>body{font:16px/1.65 system-ui,-apple-system,sans-serif;color:#173045;background:#f3f5f7;margin:0}
+main{max-width:1180px;margin:auto;padding:26px}h1{font-size:26px;overflow-wrap:anywhere}h2{margin-top:34px}
+a{color:#0757b4}code{overflow-wrap:anywhere}section,article{background:#fff;border:1px solid #d6dde4;padding:18px;border-radius:12px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.vid{margin:0;min-width:0}video{width:100%;aspect-ratio:1;background:#000}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccd5df;padding:7px;text-align:left}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef1f4;padding:12px;border-radius:8px}
+.small{color:#5a6b7b;font-size:13px}.pill{display:inline-block;background:#e7f0ff;border-radius:999px;padding:2px 10px;margin:2px;font-size:13px}</style><main><h1>shallow_water_wave_travelling_pattern_lost</h1>
+<p><span class="pill">generator shallow_water_wave_travelling_pattern_lost</span><span class="pill">head ebb9ef365f198f5852ff0bc846a92955899f5095</span>
+<span class="pill">native 2048x2048 · 24 fps · 120 frames · 5 s · H.264</span><span class="pill">violating-object-only mask</span></p>
+<p><strong>Pull request</strong>: <a href="https://github.com/hipo-dev/counterfactual-data/pull/870">https://github.com/hipo-dev/counterfactual-data/pull/870</a> · <strong>commit</strong>: <code>ebb9ef365f198f5852ff0bc846a92955899f5095</code></p>
+<p><strong>Operator</strong>: <code>basin_wave_not_launched</code> · <strong>scene params</strong>:
+<pre>{
+ &quot;amplitude&quot;: 0.012667,
+ &quot;appearance&quot;: 0,
+ &quot;basin_floor_height&quot;: 0.024,
+ &quot;basin_length&quot;: 0.7794442500000001,
+ &quot;basin_width&quot;: 0.26,
+ &quot;camera_azimuth_degrees&quot;: -90.0,
+ &quot;camera_elevation_ratio&quot;: 0.52,
+ &quot;drift_speed&quot;: 0.004,
+ &quot;drive_start&quot;: 8,
+ &quot;envelope_time&quot;: 0.45,
+ &quot;float_count&quot;: 8,
+ &quot;float_radius&quot;: 0.02,
+ &quot;float_x&quot;: [
+  -0.21972212500000002,
+  -0.15694437500000002,
+  -0.09416662500000003,
+  -0.03138887500000004,
+  0.031388874999999955,
+  0.09416662499999992,
+  0.15694437499999994,
+  0.21972212499999996
+ ],
+ &quot;gravity&quot;: 9.81,
+ &quot;model&quot;: &quot;Authored travelling-wave model, authored per frame.  The plate at the left end of the basin drives the surface height as eta(x, t) = A e(t) sin(k x - omega t) with the wave number k = 2 pi / lambda and the angular frequency omega = c k, where c is the wave speed and e(t) is an envelope that grows from zero to one over the first part of the drive, so the wave starts when the plate starts.  The floats sit on the surface and follow it, so float i at distance x_i is lifted by A e(t) sin(k x_i - omega t).  In the factual branch the wave is launched and reaches every float, so the row shows a travelling pattern with the crest moving along the basin.  In the counterfactual branch the wave never leaves the plate: the floats stay at the still water level and drift slowly along the basin, which is what the residual flow does when there is no wave to carry them.  The two branches are identical before the frame at which the plate starts to move.  The model is an authored reduced model, not a hydrodynamic solver, and it does not claim to be one.&quot;,
+ &quot;omega&quot;: 68.24051654662827,
+ &quot;plate_x&quot;: -0.304722125,
+ &quot;solver_steps_per_frame&quot;: 1,
+ &quot;spacing&quot;: 0.06277775,
+ &quot;time_scale&quot;: 1.0,
+ &quot;view&quot;: 0,
+ &quot;water_depth&quot;: 0.061111,
+ &quot;water_level&quot;: 0.08511099999999999,
+ &quot;wave_number&quot;: 25.02154548060255,
+ &quot;wave_speed&quot;: 0.366667,
+ &quot;wavelength&quot;: 0.251111
+}</pre></p>
+<h2>Rendered cases</h2><section><h3>Case 42</h3><div class="grid"><figure class="vid"><figcaption><strong>True</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/42-true.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Counterfactual</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/42-counterfactual.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Mask</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/42-mask.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Overlay</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/42-overlay.mp4" type="video/mp4"></video><small>seed 42</small></figure></div>
+<p><strong>True prompt</strong><br>A dark plate stands at the left end of a shallow basin of clear water and moves up and down, and a row of brightly coloured floats lies on the surface of the water along the basin. The wave that the plate drives travels along the basin, so the floats are lifted one after another and the crest of the wave moves from the plate towards the far end of the basin.</p>
+<p><strong>Counterfactual prompt</strong><br>A dark plate stands at the left end of a shallow basin of clear water and moves up and down, but no wave leaves the plate. The floats lie flat on the surface of the water and never rise and fall: they are only carried slowly along the basin by the residual drift of the water.</p>
+<p class="small">decoded audit: first changed frame 9, mask start 9,
+evidence frame 10, exact prefix True, strict binary mask True,
+overlay matches the counterfactual outside the mask True.</p></section><section><h3>Case 98</h3><div class="grid"><figure class="vid"><figcaption><strong>True</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/98-true.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Counterfactual</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/98-counterfactual.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Mask</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/98-mask.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Overlay</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/98-overlay.mp4" type="video/mp4"></video><small>seed 98</small></figure></div>
+<p><strong>True prompt</strong><br>A dark plate stands at the left end of a shallow basin of clear water and moves up and down, and a row of brightly coloured floats lies on the surface of the water along the basin. The wave that the plate drives travels along the basin, so the floats are lifted one after another and the crest of the wave moves from the plate towards the far end of the basin.</p>
+<p><strong>Counterfactual prompt</strong><br>A dark plate stands at the left end of a shallow basin of clear water and moves up and down, but no wave leaves the plate. The floats lie flat on the surface of the water and never rise and fall: they are only carried slowly along the basin by the residual drift of the water.</p>
+<p class="small">decoded audit: first changed frame 9, mask start 9,
+evidence frame 9, exact prefix True, strict binary mask True,
+overlay matches the counterfactual outside the mask True.</p></section>
+<h2>Case summary</h2><table><tr><th>seed</th><th>operator</th><th>first changed</th><th>mask start</th><th>evidence</th><th>decoded audit</th><th>output</th></tr><tr><td>42</td><td>basin_wave_not_launched</td><td>9</td><td>9</td><td>10</td><td>PASS</td><td>2048x2048 / 24fps / 120f</td></tr><tr><td>98</td><td>basin_wave_not_launched</td><td>9</td><td>9</td><td>9</td><td>PASS</td><td>2048x2048 / 24fps / 120f</td></tr></table>
+<h2>Contract</h2>
+<p>True and Counterfactual are produced by one declared operator applied once at a single intervention frame.
+Every decoded frame before the intervention frame is exactly equal. The mask contains only the visible pixels of the
+violating object and never a shadow. Physical time equals video time; the solver steps per recorded frame and the
+internal time step are recorded in each case metadata.</p></main></html>

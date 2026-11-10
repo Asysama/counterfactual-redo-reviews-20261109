@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>barkhausen_magnet_steps_in_discrete_jumps</title><style>body{font:16px/1.65 system-ui,-apple-system,sans-serif;color:#173045;background:#f3f5f7;margin:0}
+main{max-width:1180px;margin:auto;padding:26px}h1{font-size:26px;overflow-wrap:anywhere}h2{margin-top:34px}
+a{color:#0757b4}code{overflow-wrap:anywhere}section,article{background:#fff;border:1px solid #d6dde4;padding:18px;border-radius:12px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.vid{margin:0;min-width:0}video{width:100%;aspect-ratio:1;background:#000}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccd5df;padding:7px;text-align:left}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef1f4;padding:12px;border-radius:8px}
+.small{color:#5a6b7b;font-size:13px}.pill{display:inline-block;background:#e7f0ff;border-radius:999px;padding:2px 10px;margin:2px;font-size:13px}</style><main><h1>barkhausen_magnet_steps_in_discrete_jumps</h1>
+<p><span class="pill">generator barkhausen_magnet_steps_in_discrete_jumps</span><span class="pill">head 301df19b56359b627e0071bab4eb4a5279c25d43</span>
+<span class="pill">native 2048x2048 · 24 fps · 120 frames · 5 s · H.264</span><span class="pill">violating-object-only mask</span></p>
+<p><strong>Pull request</strong>: <a href="https://github.com/hipo-dev/counterfactual-data/pull/838">https://github.com/hipo-dev/counterfactual-data/pull/838</a> · <strong>commit</strong>: <code>301df19b56359b627e0071bab4eb4a5279c25d43</code></p>
+<p><strong>Operator</strong>: <code>induced_magnetisation_absent</code> · <strong>scene params</strong>:
+<pre>{
+ &quot;appearance&quot;: 0,
+ &quot;approach_time&quot;: 2.266667,
+ &quot;block_height&quot;: 0.050889,
+ &quot;block_length&quot;: 0.058,
+ &quot;camera_azimuth_degrees&quot;: -118.0,
+ &quot;camera_elevation_ratio&quot;: 0.46,
+ &quot;clearance&quot;: 0.132222,
+ &quot;domain_count&quot;: 8,
+ &quot;gravity&quot;: 9.81,
+ &quot;hop_count&quot;: 8.111111,
+ &quot;hop_size&quot;: 0.023111,
+ &quot;magnet_face&quot;: 0.3,
+ &quot;magnet_height&quot;: 0.024,
+ &quot;magnet_length&quot;: 0.06,
+ &quot;magnet_width&quot;: 0.02,
+ &quot;model&quot;: &quot;Reduced magnetisation model, authored per frame.  The iron block is magnetised by the field of the bar magnet at the end of the rail.  The magnetisation of a ferromagnet is carried by domains, and a domain flips when the local field crosses its threshold, so the induced magnetisation of the block - and with it the force that pulls the block - changes in discrete steps rather than continuously.  The block is modelled as being quantised: it advances towards the magnet in N equal hops of size s spread over the approach time T, and it is at rest between the hops.  The counterfactual branch keeps the same scene, the same magnet and the same release, but the field produces no induced magnetisation in the block at all, so the pull that drives the hops is absent and the block never leaves the place where it was released.  The two branches therefore agree exactly before the block is released and separate at the first hop: the factual block keeps hopping towards the magnet while the counterfactual block stands still.  The generator claims the Barkhausen picture - a magnetised body pulled towards a magnet advances in discrete jumps - and not a magnetostatic field solution or a domain simulation.&quot;,
+ &quot;rail_height&quot;: 0.008,
+ &quot;release_frame&quot;: 66,
+ &quot;solver_steps_per_frame&quot;: 1,
+ &quot;start_gap&quot;: 0.37511,
+ &quot;start_x&quot;: -0.07511000000000001,
+ &quot;time_scale&quot;: 1.0,
+ &quot;total_travel&quot;: 0.184888,
+ &quot;view&quot;: 0
+}</pre></p>
+<h2>Rendered cases</h2><section><h3>Case 42</h3><div class="grid"><figure class="vid"><figcaption><strong>True</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/42-true.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Counterfactual</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/42-counterfactual.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Mask</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/42-mask.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Overlay</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/42-overlay.mp4" type="video/mp4"></video><small>seed 42</small></figure></div>
+<p><strong>True prompt</strong><br>A small dark iron block lies on a smooth rail in front of a bar magnet that is held at the far end of the rail. The magnet pulls the block towards it, and the block moves in a series of separate hops, each of the same small size, until it is close to the magnet.</p>
+<p><strong>Counterfactual prompt</strong><br>A dark iron block lies on a smooth rail in front of a bar magnet that is held at the far end of the rail. The magnet&#x27;s field does not magnetise the block at all, so nothing pulls the block towards the magnet and the block stays exactly where it lies on the rail for the whole clip.</p>
+<p class="small">decoded audit: first changed frame 74, mask start 74,
+evidence frame 74, exact prefix True, strict binary mask True,
+overlay matches the counterfactual outside the mask True.</p></section><section><h3>Case 98</h3><div class="grid"><figure class="vid"><figcaption><strong>True</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/98-true.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Counterfactual</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/98-counterfactual.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Mask</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/98-mask.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Overlay</strong></figcaption><video controls playsinline muted preload="metadata"><source src="media/98-overlay.mp4" type="video/mp4"></video><small>seed 98</small></figure></div>
+<p><strong>True prompt</strong><br>A small dark iron block lies on a smooth rail in front of a bar magnet that is held at the far end of the rail. The magnet pulls the block towards it, and the block moves in a series of separate hops, each of the same small size, until it is close to the magnet.</p>
+<p><strong>Counterfactual prompt</strong><br>A dark iron block lies on a smooth rail in front of a bar magnet that is held at the far end of the rail. The magnet&#x27;s field does not magnetise the block at all, so nothing pulls the block towards the magnet and the block stays exactly where it lies on the rail for the whole clip.</p>
+<p class="small">decoded audit: first changed frame 62, mask start 62,
+evidence frame 62, exact prefix True, strict binary mask True,
+overlay matches the counterfactual outside the mask True.</p></section>
+<h2>Case summary</h2><table><tr><th>seed</th><th>operator</th><th>first changed</th><th>mask start</th><th>evidence</th><th>decoded audit</th><th>output</th></tr><tr><td>42</td><td>induced_magnetisation_absent</td><td>74</td><td>74</td><td>74</td><td>PASS</td><td>2048x2048 / 24fps / 120f</td></tr><tr><td>98</td><td>induced_magnetisation_absent</td><td>62</td><td>62</td><td>62</td><td>PASS</td><td>2048x2048 / 24fps / 120f</td></tr></table>
+<h2>Contract</h2>
+<p>True and Counterfactual are produced by one declared operator applied once at a single intervention frame.
+Every decoded frame before the intervention frame is exactly equal. The mask contains only the visible pixels of the
+violating object and never a shadow. Physical time equals video time; the solver steps per recorded frame and the
+internal time step are recorded in each case metadata.</p></main></html>
